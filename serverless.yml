@@ -1,0 +1,100 @@
+service: back-end-template-sql
+frameworkVersion: '3'
+
+plugins:
+  - serverless-offline
+  - serverless-plugin-split-stacks
+
+custom:
+  profile: ${self:service}-${sls:stage}
+  splitStacks:
+    perType: true
+
+provider:
+  name: aws
+  runtime: nodejs20.x
+  httpApi:
+    cors: true
+  lambdaHashingVersion: "20201221"
+  environment:
+    NODE_ENV: ${sls:stage}
+    NODE_CONFIG_DIR: /opt/config
+    NODE_PATH: /opt/node_modules
+    BCRYPT_SALT_ROUNDS: ${ssm:${self:service}-${sls:stage}-bcrypt-salt-rounds}
+    JWT_SECRET: ${ssm:${self:service}-${sls:stage}-jwt-secret}
+    JWT_ACCESS_TOKEN_EXPIRES_IN: ${ssm:${self:service}-${sls:stage}-jwt-access-token-expires-in}
+    JWT_REFRESH_TOKEN_EXPIRES_IN: ${ssm:${self:service}-${sls:stage}-jwt-refresh-token-expires-in}
+    DB_NAME: ${ssm:${self:service}-${sls:stage}-db-name}
+    DB_HOST: !GetAtt RdsCluster.Endpoint.Address
+    DB_USER: ${ssm:${self:service}-${sls:stage}-db-username}
+    DB_PASSWORD: ${ssm:${self:service}-${sls:stage}-db-password}
+    ENVIRONMENT: ${ssm:${self:service}-${sls:stage}-environment}
+
+layers:
+  main:
+    path: ./
+    package:
+      include:
+        - ./**
+
+package:
+  individually: true
+  exclude:
+    - ./**
+
+functions:
+  CreateAccount:
+    package:
+      include:
+        - ./lambdas/create-account/index.js
+    handler: lambdas/create-account/index.handler
+    layers:
+      - { Ref: MainLambdaLayer }
+    events:
+      - httpApi:
+          path: /account
+          method: post
+  CreateSession:
+    package:
+      include:
+        - ./lambdas/create-session/index.js
+    handler: lambdas/create-session/index.handler
+    layers:
+      - { Ref: MainLambdaLayer }
+    events:
+      - httpApi:
+          path: /session
+          method: post
+  GetAccounts:
+    package:
+      include:
+        - ./lambdas/get-accounts/index.js
+    handler: lambdas/get-accounts/index.handler
+    layers:
+      - { Ref: MainLambdaLayer }
+    events:
+      - httpApi:
+          path: /account
+          method: get
+  UpdateAccount:
+    package:
+      include:
+        - ./lambdas/update-account/index.js
+    handler: lambdas/update-account/index.handler
+    layers:
+      - { Ref: MainLambdaLayer }
+    events:
+      - httpApi:
+          path: /account/:id
+          method: put
+  DeleteAccount:
+    package:
+      include:
+        - ./lambdas/delete-account/index.js
+    handler: lambdas/delete-account/index.handler
+    layers:
+      - { Ref: MainLambdaLayer }
+    events:
+      - httpApi:
+          path: /account/:id
+          method: delete

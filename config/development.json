@@ -1,0 +1,24 @@
+{
+    "app": {
+        "environment": "development",
+        "env": "development",
+        "port": 5432,
+        "bcrypt": {
+            "salt_rounds": 1
+        },
+        "jwt": {
+            "secret": "secret",
+            "access_token_expires_in": "2h",
+            "refresh_token_expires_in": "2d"
+        }
+    },
+    "database": {
+        "name": "back-end-template-development",
+        "schema": "app",
+        "connection": {
+            "host": "localhost",
+            "user": "micahgtan",
+            "password": "123"
+        }
+    }
+}

@@ -1,0 +1,178 @@
+// For a detailed explanation regarding each configuration property, visit: https://www.typescriptlang.org/tsconfig
+// TypeScript Version: 5.1.3
+{
+    "compilerOptions": {
+        // Type Checking
+        "allowUnreachableCode": false,
+        "allowUnusedLabels": false,
+        "alwaysStrict": true,
+        "exactOptionalPropertyTypes": false,
+        "noFallthroughCasesInSwitch": true,
+        "noImplicitAny": true,
+        "noImplicitOverride": true,
+        "noImplicitReturns": true,
+        "noImplicitThis": true,
+        "noPropertyAccessFromIndexSignature": false,
+        "noUncheckedIndexedAccess": false,
+        "noUnusedLocals": false,
+        "noUnusedParameters": true,
+        "strict": true,
+        "strictBindCallApply": true,
+        "strictFunctionTypes": true,
+        "strictNullChecks": true,
+        "strictPropertyInitialization": true,
+        "useUnknownInCatchVariables": false,
+
+        // Modules
+        // "allowArbitraryExtensions": false,
+        // "allowImportingTsExtensions": false,
+        "allowUmdGlobalAccess": false,
+        "baseUrl": ".",
+        // "customConditions": [],
+        "module": "nodenext",
+        "moduleResolution": "nodenext",
+        "moduleSuffixes": [],
+        "noResolve": false,
+        "paths": {
+            "@src/*": [
+                "src/*"
+            ],
+            "@constants/*": [
+                "src/constants/*"
+            ],
+            "@features/*": [
+                "src/features/*"
+            ],
+            "@interfaces/*": [
+                "src/interfaces/*"
+            ],
+            "@observers/*": [
+                "src/observers/*"
+            ],
+            "@services/*": [
+                "src/services/*"
+            ],
+            "@templates/*": [
+                "src/templates/*"
+            ],
+            "@utils/*": [
+                "src/utils/*"
+            ],
+            "@tests/*": [
+                "tests/*"
+            ],
+        },   
+        "resolveJsonModule": true,
+        // "resolvePackageJsonExports": false,
+        // "resolvePackageJsonImports": false,
+        // "rootDir": ".",
+        // "rootDirs": [],
+        // "typeRoots": [],
+        "types": [
+            "express",
+            "jest",
+            "node",
+            "reflect-metadata",
+        ],
+
+        // Emit
+        "declaration": false,
+        // "declarationDir": "",
+        "declarationMap": false,
+        "downlevelIteration": false,
+        "emitBOM": false,
+        "emitDeclarationOnly": false,
+        "importHelpers": false,
+        "inlineSourceMap": false,
+        "inlineSources": false,
+        "mapRoot": "",
+        "newLine": "lf",
+        "noEmit": false,
+        "noEmitHelpers": false,
+        "noEmitOnError": false,
+        "outDir": "",
+        // "outFile": "",
+        "preserveConstEnums": false,
+        "removeComments": false,
+        "sourceMap": false,
+        "sourceRoot": "",
+        "stripInternal": false,
+
+        // JavaScript Support
+        "allowJs": false,
+        "checkJs": false,
+        "maxNodeModuleJsDepth": 0,
+
+        // Editor Support
+        "disableSizeLimit": false,
+        "plugins": [],
+
+        // Interop Constraints
+        "allowSyntheticDefaultImports": true,
+        "esModuleInterop": true,
+        "forceConsistentCasingInFileNames": true,
+        "isolatedModules": false,
+        "preserveSymlinks": false,
+        // "verbatimModuleSyntax": false,
+
+        // Language and Environment
+        "emitDecoratorMetadata": false,
+        "experimentalDecorators": true,
+        "jsx": "preserve",
+        "jsxFactory": "React.createElement",
+        "jsxFragmentFactory": "React.Fragment",
+        "jsxImportSource": "react",
+        "lib": [
+            "dom",
+            "esnext"
+        ],
+        "moduleDetection": "auto",
+        "noLib": false,
+        // "reactNamespace": "React",
+        "target": "esnext",
+        "useDefineForClassFields": false,
+
+        // Compiler Diagnostics
+        "explainFiles": false,
+        "extendedDiagnostics": false,
+        "generateCpuProfile": "profile.cpuprofile",
+        "listEmittedFiles": false,
+        "listFiles": false,
+        "traceResolution": false,
+
+        // Projects
+        "composite": false,
+        "disableReferencedProjectLoad": false,
+        "disableSolutionSearching": false,
+        "disableSourceOfProjectReferenceRedirect": false,
+        // "incremental": false,
+        // "tsBuildInfoFile": ".tsbuildinfo",
+
+        // Output Formatting
+        "noErrorTruncation": false,
+        "preserveWatchOutput": true,
+        "pretty": true,
+
+        // Completeness
+        "skipLibCheck": false,
+
+        // Watch Options
+        "assumeChangesOnlyAffectDirectDependencies": false,
+    },
+    "watchOptions": {
+        // Watch Options
+        "watchFile": "useFsEvents",
+        "watchDirectory": "useFsEvents",
+        "fallbackPolling": "fixedinterval",
+        "synchronousWatchDirectory": true,
+        "excludeDirectories": [],
+        "excludeFiles": [],
+    },
+    "typeAcquisition": {
+        // Type Acquisition
+        "enable": false,
+        "include": [],
+        "exclude": [],
+        "disableFilenameBasedTypeAcquisition": true,
+    }
+}

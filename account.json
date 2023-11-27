@@ -1,0 +1,10 @@
+{
+    "id": "account-1",
+    "first_name": "first_name_1",
+    "middle_name": "middle_name_1",
+    "last_name": "last_name_1",
+    "contact_number": "09123456789",
+    "email_address": "email_address1@email.com",
+    "username": "username1",
+    "password": "password1"
+}
