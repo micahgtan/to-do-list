@@ -13,7 +13,7 @@ export default {
   coverageReporters: ['clover', 'json', 'lcov', 'text'],
   coverageThreshold: undefined,
   dependencyExtractor: undefined,
-  displayName: 'Back-End Template (SQL)',
+  displayName: 'To-Do List',
   errorOnDeprecated: false,
   extensionsToTreatAsEsm: [],
   fakeTimers: {},

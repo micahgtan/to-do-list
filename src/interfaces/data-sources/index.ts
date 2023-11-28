@@ -4,3 +4,9 @@ export type {
     IDeleteAccountParameters,
     IAccountDataSource,
 } from './account'
+export type {
+    IGetDutyParameters,
+    IQueryDutyParameters,
+    IDeleteDutyParameters,
+    IDutyDataSource,
+} from './duty'

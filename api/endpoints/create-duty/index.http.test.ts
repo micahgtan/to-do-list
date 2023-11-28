@@ -2,49 +2,62 @@ import { StatusCodes } from 'http-status-codes'
 import _ from 'lodash'
 import { Factory } from 'rosie'
 import request from 'supertest'
-import type { IAccountDataSource } from '@interfaces/data-sources'
-import type { IAccount } from '@interfaces/models'
+import type {
+    IAccountDataSource,
+    IDutyDataSource,
+} from '@interfaces/data-sources'
+import type {
+    IAccount,
+    IDuty,
+} from '@interfaces/models'
 import container from '@src/index'
 import Types from '@src/types'
-import { validateAccount } from '@tests/assertions'
+import { validateDuty } from '@tests/assertions'
 import app from '../..'
 
-const URL = '/accounts'
+const URL = '/duties'
 
-describe('CreateAccountEndpoint', (): void => {
+describe('CreateDutyEndpoint', (): void => {
     const accountDataSource: IAccountDataSource = container.get(Types.AccountDataSource)
+    const dutyDataSource: IDutyDataSource = container.get(Types.DutyDataSource)
     const mockAccount: IAccount = Factory.build('service.account_database.record.account.1')
-    const mockValidCreateAccountParameters = _.omit(mockAccount, ['id', 'created_at', 'updated_at'])
+    const mockDuty: IDuty = Factory.build('service.duty_database.record.duty.1')
+    const mockValidCreateDutyParameters = _.omit(mockDuty, ['id', 'created_at', 'updated_at'])
+
+    beforeEach(async (): Promise<void> => {
+        await accountDataSource.create(mockAccount)
+    })
 
     afterEach(async (): Promise<void> => {
+        await dutyDataSource.truncate()
         await accountDataSource.truncate()
     })
 
     it('returns a success response if the parameters are valid', async (): Promise<void> => {
         const response = await request(app)
             .post(URL)
-            .send(mockValidCreateAccountParameters)
+            .send(mockValidCreateDutyParameters)
             .expect(StatusCodes.OK)
         const {
             body,
         } = response
         const {
             data,
-        }: { data: IAccount } = body
+        }: { data: IDuty } = body
         expect(body).toHaveProperty('status', 'success')
         expect(body).toHaveProperty('data')
-        validateAccount(data)
+        validateDuty(data)
     })
 
     describe('returns a failed response if the parameters are invalid', (): void => {
-        Object.keys(mockValidCreateAccountParameters).forEach((key: string): void => {
+        Object.keys(mockValidCreateDutyParameters).forEach((key: string): void => {
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            const mockInvalidCreateAccountParameters: any = _.omit(mockValidCreateAccountParameters, [key])
+            const mockInvalidCreateDutyParameters: any = _.omit(mockValidCreateDutyParameters, [key])
             it(`fails when the ${key} parameter is missing`, async (): Promise<void> => {
                 const response = await request(app)
                     .post(URL)
                     // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
-                    .send(mockInvalidCreateAccountParameters)
+                    .send(mockInvalidCreateDutyParameters)
                     .expect(StatusCodes.OK)
                 const {
                     body,

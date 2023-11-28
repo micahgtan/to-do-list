@@ -2,7 +2,7 @@
     "app": {
         "environment": "development",
         "env": "development",
-        "port": 5432,
+        "port": 3000,
         "bcrypt": {
             "salt_rounds": 1
         },
@@ -13,7 +13,7 @@
         }
     },
     "database": {
-        "name": "back-end-template-development",
+        "name": "to-do-list-development",
         "schema": "app",
         "connection": {
             "host": "localhost",

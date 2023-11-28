@@ -8,7 +8,7 @@ import Types from '@src/types'
 import { validateAccount } from '@tests/assertions'
 import app from '../..'
 
-const URL = '/account'
+const URL = '/accounts'
 
 describe('UpdateAccountEndpoint', (): void => {
     const accountDataSource: IAccountDataSource = container.get(Types.AccountDataSource)

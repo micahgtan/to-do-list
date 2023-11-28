@@ -10,8 +10,10 @@ const createAccountScript = async (): Promise<void> => {
         const createAccount: IExecutable<IParameters, IResponse> = container.get(Types.CreateAccount)
         const createdAccount = await createAccount.execute(account)
         console.log('Successfully created an account', createdAccount)
+        return Promise.resolve()
     } catch (error) {
         console.log('Encountered an error while creating an account', error)
+        return Promise.reject(error)
     }
 }
 

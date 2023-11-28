@@ -8,6 +8,9 @@ export interface IValidationError {
 export interface IOptions {
     transaction?: Knex.Transaction,
     for_update?: boolean,
+    include?: {
+        account?: boolean,
+    },
     sort?: {
         column: string,
         order: 'asc' | 'desc',

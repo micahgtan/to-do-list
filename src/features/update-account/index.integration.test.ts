@@ -32,7 +32,7 @@ describe('UpdateAccount', (): void => {
             expect(updatedAccount).toHaveProperty('first_name', mockValidUpdateAccountParameters.first_name)
         })
 
-        it('fails when an account record with an id property equal to the account_id parameter does not exist in the database', async (): Promise<void> => {
+        it('fails when an account record with an id property equal to the id parameter does not exist in the database', async (): Promise<void> => {
             const subject: IExecutable<IParameters, IResponse> = container.get(Types.UpdateAccount)
             try {
                 await accountDataSource.truncate()

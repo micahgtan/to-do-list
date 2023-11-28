@@ -32,6 +32,7 @@ module.exports = {
         },
         tables: {
             accounts: 'accounts',
+            duties: 'duties',
         },
         postgres_errors: {
             foreign_key: '23503',
