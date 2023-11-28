@@ -58,7 +58,7 @@ describe('CreateDutyEndpoint', (): void => {
                     .post(URL)
                     // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
                     .send(mockInvalidCreateDutyParameters)
-                    .expect(StatusCodes.OK)
+                    .expect(StatusCodes.BAD_REQUEST)
                 const {
                     body,
                 } = response

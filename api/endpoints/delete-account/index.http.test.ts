@@ -44,7 +44,7 @@ describe('DeleteAccountEndpoint', (): void => {
         const response = await request(app)
             .delete(`${URL}/${mockAccount2.id}`)
             .send(mockValidDeleteAccountParameters)
-            .expect(StatusCodes.OK)
+            .expect(StatusCodes.BAD_REQUEST)
         const {
             body,
         } = response

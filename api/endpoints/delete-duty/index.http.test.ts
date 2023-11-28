@@ -56,7 +56,7 @@ describe('DeleteDutyEndpoint', (): void => {
         const response = await request(app)
             .delete(`${URL}/${mockDuty2.id}`)
             .send(mockValidDeleteDutyParameters)
-            .expect(StatusCodes.OK)
+            .expect(StatusCodes.BAD_REQUEST)
         const {
             body,
         } = response

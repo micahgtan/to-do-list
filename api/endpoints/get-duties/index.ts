@@ -17,7 +17,7 @@ export default async (req: Request, res: Response): Promise<Response> => {
             data: duties,
         })
     } catch (error) {
-        return res.status(StatusCodes.OK).json({
+        return res.status(StatusCodes.BAD_REQUEST).json({
             status: 'failed',
             data: error,
         })

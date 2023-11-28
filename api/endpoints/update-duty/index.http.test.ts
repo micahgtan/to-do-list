@@ -56,7 +56,7 @@ describe('UpdateDutyEndpoint', (): void => {
         const response = await request(app)
             .put(`${URL}/${mockDuty2.id}`)
             .send(mockValidUpdateDutyParameters)
-            .expect(StatusCodes.OK)
+            .expect(StatusCodes.BAD_REQUEST)
         const {
             body,
         } = response

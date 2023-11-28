@@ -65,7 +65,7 @@ describe('CreateSessionEndpoint', (): void => {
         const response = await request(app)
             .post(URL)
             .send(mockInvalidCreateSessionParameters)
-            .expect(StatusCodes.OK)
+            .expect(StatusCodes.BAD_REQUEST)
         const {
             body,
         } = response

@@ -46,7 +46,7 @@ describe('UpdateAccountEndpoint', (): void => {
         const response = await request(app)
             .put(`${URL}/${mockAccount2.id}`)
             .send(mockValidUpdateAccountParameters)
-            .expect(StatusCodes.OK)
+            .expect(StatusCodes.BAD_REQUEST)
         const {
             body,
         } = response
